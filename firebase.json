@@ -1,10 +1,10 @@
 {
   "database": {
-    "rules": "database.rules.json"
+    "rules": "autonomy-participating/apps/database.rules.json"
   },
   "firestore": {
-    "rules": "firestore.rules",
-    "indexes": "firestore.indexes.json"
+    "rules": "autonomy-participating/apps/firestore.rules",
+    "indexes": "autonomy-participating/apps/firestore.indexes.json"
   },
   "functions": [
     {
@@ -23,7 +23,7 @@
     }
   ],
   "remoteconfig": {
-    "template": "remoteconfig.template.json"
+    "template": "autonomy-participating/apps/remoteconfig.template.json"
   },
   "hosting": {
     "public": "autonomy-participating/dist/apps/fe-provider",
