@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const dir = 'apps/fe-provider/src/environments';
+const dir = './apps/fe-provider/src/environments';
 const file = 'environment.ts';
 
 const content = `${process.env.FIREBASE_SDK}`;
