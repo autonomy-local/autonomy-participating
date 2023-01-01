@@ -24,5 +24,19 @@
   ],
   "remoteconfig": {
     "template": "remoteconfig.template.json"
+  },
+  "hosting": {
+    "public": "dist/apps/fe-provider",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
   }
 }
