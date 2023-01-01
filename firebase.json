@@ -26,7 +26,7 @@
     "template": "remoteconfig.template.json"
   },
   "hosting": {
-    "public": "dist/apps/fe-provider",
+    "public": "autonomy-participating/dist/apps/fe-provider",
     "ignore": [
       "firebase.json",
       "**/.*",
