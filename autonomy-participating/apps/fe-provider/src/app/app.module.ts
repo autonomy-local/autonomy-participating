@@ -6,15 +6,31 @@ import { NxWelcomeComponent } from './nx-welcome.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { AngularFireModule } from '@angular/fire/compat';
+import { getApp, initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { connectAuthEmulator, initializeAuth, provideAuth, browserPopupRedirectResolver, browserSessionPersistence } from '@angular/fire/auth';
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import { environment } from '../environments/environment';
+
+const isDev = !environment.production;
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    // Firebase App
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    // Firebase Auth - in Dev mode with Emulator
+    provideAuth(() => {
+      const auth = initializeAuth(getApp(), {
+        popupRedirectResolver: browserPopupRedirectResolver,
+        persistence: browserSessionPersistence,
+      });
+
+      if (isDev) connectAuthEmulator(auth, 'http://localhost:9099');
+
+      return auth;
+    }),
+    NgxAuthFirebaseUIModule.forRoot(environment.firebase),
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
     BrowserAnimationsModule,
   ],
