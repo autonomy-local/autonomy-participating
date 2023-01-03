@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthProvider, Theme } from 'ngx-auth-firebaseui';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'autonomy-participating-root',
@@ -7,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'fe-provider';
+  themes = Theme;
+  providers: AuthProvider[] =[AuthProvider.Google, AuthProvider.Github];
+  constructor(private auth: AngularFireAuth){}
+  loginRequest(){
+  }
+  registerSuccess(event:{}){
+  }
+  
 }
