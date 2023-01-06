@@ -6,14 +6,22 @@ import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { getApp, initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { connectAuthEmulator, initializeAuth, provideAuth, browserPopupRedirectResolver, browserSessionPersistence } from '@angular/fire/auth';
+import {
+  connectAuthEmulator,
+  initializeAuth,
+  provideAuth,
+  browserPopupRedirectResolver,
+  browserSessionPersistence,
+} from '@angular/fire/auth';
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import { environment } from '../environments/environment';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 const isDev = !environment.production;
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoginComponent, SignupComponent],
   imports: [
     BrowserModule,
     // Firebase App
