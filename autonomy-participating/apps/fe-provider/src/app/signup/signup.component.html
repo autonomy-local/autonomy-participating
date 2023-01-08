@@ -3,6 +3,7 @@
   (onSuccess)="registerSuccess($event)"
 ></ngx-auth-firebaseui-register>
 <ngx-auth-firebaseui-providers
+  (onSuccess)="socialRegisterSuccess($event)"
   [theme]="themes.RAISED"
   [providers]="providers"
 ></ngx-auth-firebaseui-providers>

@@ -17,11 +17,17 @@ import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import { environment } from '../environments/environment';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { AccountRegisterComponent } from './account-register/account-register.component';
 
 const isDev = !environment.production;
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, SignupComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    SignupComponent,
+    AccountRegisterComponent,
+  ],
   imports: [
     BrowserModule,
     // Firebase App

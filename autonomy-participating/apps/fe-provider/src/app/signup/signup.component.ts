@@ -17,4 +17,7 @@ export class SignupComponent {
   }
   registerSuccess(event:{}){
   }
+  socialRegisterSuccess(event:{}){
+    this.router.navigate(['/register']);
+  }
 }
