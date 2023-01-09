@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import * as  firestore  from 'firebase/firestore'
+
 @Component({
   selector: 'autonomy-participating-account-register',
   templateUrl: './account-register.component.html',
@@ -23,7 +23,6 @@ export class AccountRegisterComponent {
             photoURL: user.photoURL,
             displayName: user.displayName,
             prociderId: user.providerData[0]?.providerId,
-            createdAt: firestore.Timestamp.fromDate(new Date()),
           })
         }
       }
