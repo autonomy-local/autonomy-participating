@@ -13,11 +13,14 @@ import {
   browserPopupRedirectResolver,
   browserSessionPersistence,
 } from '@angular/fire/auth';
+import {
+  getFirestore, initializeFirestore, provideFirestore } from '@angular/fire/firestore';
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import { environment } from '../environments/environment';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AccountRegisterComponent } from './account-register/account-register.component';
+import { connectFirestoreEmulator } from '@firebase/firestore';
 
 const isDev = !environment.production;
 
@@ -38,10 +41,18 @@ const isDev = !environment.production;
         popupRedirectResolver: browserPopupRedirectResolver,
         persistence: browserSessionPersistence,
       });
-
       if (isDev) connectAuthEmulator(auth, 'http://localhost:9099');
 
       return auth;
+    }),
+    provideFirestore(() => {
+      const firestore = initializeFirestore(getApp(), {
+        experimentalForceLongPolling: isDev ? true: false,
+      });
+      if(isDev) {
+        connectFirestoreEmulator(firestore, 'localhost', 8080);
+      }
+      return firestore;
     }),
     NgxAuthFirebaseUIModule.forRoot(environment.firebase),
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
